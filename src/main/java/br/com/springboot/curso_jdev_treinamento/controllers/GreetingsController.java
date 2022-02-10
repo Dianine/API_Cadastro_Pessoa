@@ -46,6 +46,14 @@ public class GreetingsController {
     	return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
     } 
     
+    @GetMapping(value ="buscarPorNome")
+    @ResponseBody
+    public ResponseEntity<java.util.List<Usuario>> buscarPorNome( @RequestParam(name = "name") String name ){
+    	java.util.List<Usuario> usuario = usuarioRepository.buscarPorNome(name);
+    	return new ResponseEntity<java.util.List<Usuario>>(usuario, HttpStatus.OK);
+    } 
+    
+    
     @PostMapping(value ="salvar")
     @ResponseBody
     public ResponseEntity<Usuario> salvar( @RequestBody Usuario usuario ){
@@ -70,10 +78,4 @@ public class GreetingsController {
     	return new ResponseEntity<String>("User deletado com sucesso", HttpStatus.OK);
     }
     
-   
-    
-    
-    
-    
-
 }
