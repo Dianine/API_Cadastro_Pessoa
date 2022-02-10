@@ -13,7 +13,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	
 	
 	/*Query serve para trabalhar dentro do banco*/
-	@Query (value = "select u from Usuario u where u.nome like %?1%") /*Busca pelo nome dentro do Banco*/
+	@Query (value = "select u from Usuario u where upper(trim(u.nome)) like %?1%") /*Busca pelo nome dentro do Banco*/
 	List<Usuario>buscarPorNome(String name);
 
 }
